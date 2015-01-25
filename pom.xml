@@ -22,12 +22,20 @@
 		<maven-surefire-plugin.version>2.12.4</maven-surefire-plugin.version>
 		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
 		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
+		
+		<cdi.version>1.2</cdi.version>
 
 		<jboss-javaee-7.0.version>1.0.2.Final</jboss-javaee-7.0.version>
+
 		<!-- Weld version in WildFly 8.2.0.Final -->
+		
 		<weld.version>2.2.6.Final</weld.version>
 
+		<!-- OpenWebBeans version in TomEE 1.6.0 -->
 		<owb.version>1.5.0-SNAPSHOT</owb.version>
+
+
+		<wildfly8.version>8.2.0.Final</wildfly8.version>
 
 		<deltaspike.version>1.1.0</deltaspike.version>
 
@@ -43,6 +51,7 @@
 		<shrinkwrap-resolver.version>2.0.2</shrinkwrap-resolver.version>
 
 
+		<jboss-javaee-6.0.version>3.0.2.Final</jboss-javaee-6.0.version>
 	</properties>
 
 	<dependencyManagement>
@@ -53,9 +62,14 @@
 				<artifactId>jboss-javaee-7.0</artifactId>
 				<version>${jboss-javaee-7.0.version}</version>
 				<type>pom</type>
-				<scope>import</scope>
+				<scope>test</scope>
 			</dependency>
 
+			<dependency>
+				<groupId>javax.enterprise</groupId>
+				<artifactId>cdi-api</artifactId>
+				<version>${cdi.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.jboss.weld</groupId>
@@ -125,6 +139,12 @@
 				<type>pom</type>
 			</dependency>
 
+			<dependency>
+				<groupId>org.apache.openwebbeans.arquillian</groupId>
+				<artifactId>owb-arquillian-standalone</artifactId>
+				<version>${owb.version}</version>
+				<scope>test</scope>
+			</dependency>
 
 			<dependency>
 				<groupId>org.jboss.arquillian.container</groupId>
@@ -259,7 +279,6 @@
 					<artifactId>jboss-javaee-7.0</artifactId>
 					<version>${jboss-javaee-7.0.version}</version>
 					<type>pom</type>
-					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.jboss.arquillian.container</groupId>
@@ -299,37 +318,91 @@
 					<artifactId>jboss-javaee-7.0</artifactId>
 					<version>${jboss-javaee-7.0.version}</version>
 					<type>pom</type>
-					<scope>test</scope>
 				</dependency>
+
 				<dependency>
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-impl</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.openwebbeans</groupId>
-					<artifactId>openwebbeans-spi</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.openwebbeans</groupId>
-					<artifactId>openwebbeans-resource</artifactId>
 				</dependency>
 
 				<dependency>
 					<groupId>org.apache.openwebbeans.arquillian</groupId>
 					<artifactId>owb-arquillian-standalone</artifactId>
-					<version>${owb.version}</version>
-					<scope>test</scope>
 				</dependency>
 
-				<!--<dependency>
-					<groupId>org.apache.bval</groupId>
-					<artifactId>bval-jsr303</artifactId>
-					<scope>test</scope>
-				</dependency>-->
 			</dependencies>
 
 
 		</profile>
+
+		<profile>
+			<id>wildfly-8</id>
+			<properties>
+				<arquillian>wildfly-arquillian-container-embedded</arquillian>
+			</properties>
+
+			<dependencies>
+
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-embedded</artifactId>
+					<version>${wildfly8.version}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<testResources>
+					<testResource>
+						<directory>src/test/resources</directory>
+						<filtering>true</filtering>
+					</testResource>
+				</testResources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<!--<configuration>
+							<skip>${maven.test.skip}</skip>
+						</configuration>-->
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.wildfly</groupId>
+											<artifactId>wildfly-dist</artifactId>
+											<version>${wildfly8.version}</version>
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${project.build.directory}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+
+						<configuration>
+							<systemPropertyVariables>
+								<java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+							</systemPropertyVariables>
+							<environmentVariables>
+								<JBOSS_HOME>${project.build.directory}/wildfly-${wildfly8.version}</JBOSS_HOME>
+							</environmentVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 
 	</profiles>
 

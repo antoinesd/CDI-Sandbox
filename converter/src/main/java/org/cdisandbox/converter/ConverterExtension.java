@@ -66,7 +66,6 @@ public class ConverterExtension implements Extension {
     }
     
     public void addTypeToConverter(@Observes ProcessBeanAttributes<Object> pba) {
-        
         if (pba.getAnnotated().isAnnotationPresent(Convert.class)) {
             pba.setBeanAttributes(new ConverterBeanAttribute(pba.getBeanAttributes(), types));
         }

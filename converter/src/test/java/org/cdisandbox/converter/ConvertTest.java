@@ -19,7 +19,7 @@ import javax.inject.Inject;
  */
 
 @RunWith(Arquillian.class)
-public class ConvertProducerTest {
+public class ConvertTest {
 
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
