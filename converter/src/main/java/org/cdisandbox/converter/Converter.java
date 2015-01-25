@@ -1,17 +1,20 @@
 package org.cdisandbox.converter;
 
-import javax.enterprise.inject.Produces;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.spi.InjectionPoint;
+import javax.inject.Inject;
 
 /**
  * @author Antoine Sabot-Durand
  */
-public class ConverterProducer {
+@Dependent
+public class Converter {
 
+    @Inject
+    private InjectionPoint ip;
+    
 
-    @Produces
-    @Convert
-    public Object produceConverter(InjectionPoint ip) {
+    public Object convert() {
         String toConvert = ip.getAnnotated().getAnnotation(Convert.class).value();
         Class<?> toType = (Class<?>) ip.getAnnotated().getBaseType();
 

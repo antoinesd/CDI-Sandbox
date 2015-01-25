@@ -19,14 +19,14 @@ import javax.inject.Inject;
  */
 
 @RunWith(Arquillian.class)
-public class ConvertProducerTest {
+public class ConverterTest {
 
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
 
         WebArchive ret = ShrinkWrap
                 .create(WebArchive.class, "test.war")
-                .addPackage("org.cdisandbox.converter")
+                .addPackage("org.cdisandbox.convert")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsServiceProvider(Extension.class, ConverterExtension.class);
 
