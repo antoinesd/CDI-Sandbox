@@ -9,7 +9,7 @@ You'll only need to choose of tof the provided maven profiles for test. Profiles
 
 * `owb-1.2` for OpenWebBeans 1.2.x
 * `weld-1.1` for Weld 1.1.x tests
-* `owb-1.5`for OpenWebBeans 1.5.x tests
+* `owb-1.5` for OpenWebBeans 1.5.x tests
 * `weld-2.2` for Weld 2.2.x tests
 * `wildfly-8` for JBoss WildFly 8.x
 
