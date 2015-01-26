@@ -9,6 +9,7 @@ You'll only need to choose of tof the provided maven profiles for test. Profiles
 
 * `owb-1.5`for OpenWebBeans tests
 * `weld-2.2` for Weld 2.x tests
+* `wildfly-8` for JBoss WildFly 8.x
 
 Just launch `mvn clean test -P&lt;profile&gt;` to launch test (for instance `mvn clean test -Powb` to test against OpenWebBeans).
 Tests won't be launched without one of these profiles.
