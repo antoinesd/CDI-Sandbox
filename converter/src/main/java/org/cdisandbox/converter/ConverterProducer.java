@@ -6,12 +6,12 @@ import javax.enterprise.inject.spi.InjectionPoint;
 /**
  * @author Antoine Sabot-Durand
  */
-public class Converter {
+public class ConverterProducer {
     
 
     @Produces
     @Convert
-    public Object convert(InjectionPoint ip) {
+    public Object produceConverter(InjectionPoint ip) {
         String toConvert = ip.getAnnotated().getAnnotation(Convert.class).value();
         Class<?> toType = (Class<?>) ip.getAnnotated().getBaseType();
 
