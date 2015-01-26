@@ -22,9 +22,9 @@ You'll only need to choose of tof the provided maven profiles for test. Profiles
 * `weld-2.2` for Weld 2.2.x tests
 * `wildfly-8` for Wildlfy 8.x tests
 
-Just launch `mvn clean test -P&lt;profile&gt;` to launch test (for instance `mvn clean test -Powb-1.2` to test against OpenWebBeans).
+Just launch `mvn clean test -P<profile>` to launch test (for instance `mvn clean test -Powb-1.2` to test against OpenWebBeans).
 Tests won't be launched without one of these profiles.
 
 == CDI 1.2
 
-Checkout branch CDI-1.2 of this repository to get version of these example for CDI 1.2 (and more example not CDI 1.0 compatible)
+Checkout branch CDI-1.2 of this repository to get version of these example for CDI 1.2 (and more examples not CDI 1.0 compatible)

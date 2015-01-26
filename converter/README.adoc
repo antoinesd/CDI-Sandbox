@@ -5,11 +5,5 @@ will be analyzed and treated by the `ConverterExtension` to be processed by a un
 
 == Launching test
 
-You'll only need to choose of tof the provided maven profiles for test. Profiles are :
-
-* `owb-1.5`for OpenWebBeans tests
-* `weld-2.2` for Weld 2.x tests
-
-Just launch `mvn clean test -P&lt;profile&gt;` to launch test (for instance `mvn clean test -Powb` to test against OpenWebBeans).
-Tests won't be launched without one of these profiles.
+See Readme doc of the repo to know how to launch tests
 
