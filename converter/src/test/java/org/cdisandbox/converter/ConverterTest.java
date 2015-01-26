@@ -26,7 +26,7 @@ public class ConverterTest {
 
         WebArchive ret = ShrinkWrap
                 .create(WebArchive.class, "test.war")
-                .addPackage("org.cdisandbox.convert")
+                .addPackage("org.cdisandbox.converter")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsServiceProvider(Extension.class, ConverterExtension.class);
 
