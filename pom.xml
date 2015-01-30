@@ -8,8 +8,6 @@
 	<artifactId>parent</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<modules>
-		<module>converter</module>
-		<module>events</module>
 		<module>typeassign</module>
 	</modules>
 
