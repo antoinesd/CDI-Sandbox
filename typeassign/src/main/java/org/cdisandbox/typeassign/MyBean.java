@@ -5,8 +5,8 @@ import javax.inject.Inject;
 /**
  *
  */
-public class MyBean<T extends MasterDbo<D>,D extends DetailDbo> {
+public class MyBean {
     
     @Inject
-    public MyService<T,D> ws;
+    public MyService<ClassA,ClassB> ms;
 }

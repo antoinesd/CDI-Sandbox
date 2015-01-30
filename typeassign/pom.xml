@@ -10,21 +10,5 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>typeassign</artifactId>
-	<!--<dependencies>
-		<dependency>
-			<groupId>org.jboss.spec</groupId>
-			<artifactId>jboss-javaee-7.0</artifactId>
-			<type>pom</type>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>-->
-	<properties>
-
-		<weld-1.version>1.1.28.Final</weld-1.version>
-			
-
-		<weld-2.version>2.2.3.Final</weld-2.version>
-
-	</properties>
 
 </project>

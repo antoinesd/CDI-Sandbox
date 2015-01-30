@@ -32,7 +32,7 @@ public class TypeVariableTest {
         }
     
     @Inject
-    private SpecialBean sb;
+    private MyBean sb;
     
     
     @Test
