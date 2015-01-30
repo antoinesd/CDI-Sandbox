@@ -10,6 +10,7 @@
 	<modules>
 		<module>converter</module>
 		<module>events</module>
+		<module>typeassign</module>
 	</modules>
 
 	<packaging>pom</packaging>
