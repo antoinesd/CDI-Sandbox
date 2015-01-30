@@ -10,5 +10,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>typeassign</artifactId>
+	
+	<properties>
+
+		<weld-1.version>1.1.28.Final</weld-1.version>
+		
+		<weld-2.version>2.2.9.Final</weld-2.version>
+
+	</properties>
 
 </project>
