@@ -30,7 +30,7 @@ public class AutoInjectTest {
 
         WebArchive ret = ShrinkWrap
                 .create(WebArchive.class, "test.war")
-                .addPackage("org.cdisandbox.autoinject")
+                .addPackages(true, "org.cdisandbox.autoinject")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsServiceProvider(Extension.class, AutoInjectExtension.class);
 

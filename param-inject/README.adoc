@@ -7,10 +7,9 @@ This example is a proof of concept to add injection at parameter level in CDI. `
 
 You'll only need to choose one of the provided maven profiles for test. Profiles are :
 
-* `owb-1.5` for OpenWebBeans 1.5.x tests
-* `weld-2.2` for Weld 2.2.x tests
-* `wildfly-8` for JBoss WildFly 8.x
+* `owb-1` for OpenWebBeans 1.6.x tests
+* `weld-2` for Weld 2.3.x tests
+* `wildfly` for JBoss WildFly 10.x
 
-Just launch `mvn -P<profile>` to launch test (for instance `mvn clean test -Powb-1.5` to test against OpenWebBeans).
+Just launch `mvn -P<profile>` to launch test (for instance `mvn clean test -Powb-1` to test against OpenWebBeans).
 Tests won't be launched without one of these profiles.
-
