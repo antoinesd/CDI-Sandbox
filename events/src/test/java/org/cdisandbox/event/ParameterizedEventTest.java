@@ -10,11 +10,13 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Antoine Sabot-Durand
@@ -22,6 +24,13 @@ import javax.inject.Inject;
 
 @RunWith(Arquillian.class)
 public class ParameterizedEventTest {
+
+    @Inject
+    Event<List<Number>> listNumberEvent;
+    @Inject
+    Event<List<Integer>> listIntegerEvent;
+    @Inject
+    Event<Map<?, ?>> paramEvtMap;
 
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
@@ -33,14 +42,6 @@ public class ParameterizedEventTest {
 
         return ret;
     }
-
-
-    @Inject
-    Event<List<Number>> listNumberEvent;
-
-    @Inject
-    Event<List<Integer>> listIntegerEvent;
-
 
     @Test
     public void shouldCallNumberObserver() {
@@ -60,4 +61,11 @@ public class ParameterizedEventTest {
 
     }
 
+    @Test
+    public void shouldWork() {
+        Map<?, ?> pl = new HashMap<>();
+        paramEvtMap.fire(pl);
+        Assert.assertTrue(true);
+
+    }
 }

@@ -1,6 +1,6 @@
 = Auto Inject extension Example
 
-This example show how an extension can analyse AnnotatedType to tranform a given annotation in an injection Point
+This example show how an extension can analyse AnnotatedType to transform a given annotation in an injection Point
 
 == Launching test
 

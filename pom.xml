@@ -12,7 +12,8 @@
         <module>events</module>
         <module>param-inject</module>
         <module>fat-entities</module>
-        <module>auto-inject</module>
+        <module>autoinject</module>
+        <module>configured-bean</module>
     </modules>
 
     <packaging>pom</packaging>

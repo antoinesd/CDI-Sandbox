@@ -1,5 +1,6 @@
-package org.cdisandbox.autoinject;
+package org.cdisandbox.config;
 
+import javax.inject.Qualifier;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -8,10 +9,14 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * This Annotation don't have to be a qualifier
+ * @author Antoine Sabot-Durand
  */
+@Qualifier
 @Target({TYPE, METHOD, PARAMETER, FIELD})
 @Retention(RUNTIME)
 @Documented
-public @interface CacheContext {
+public @interface Configuration {
+
+    String value();
+
 }

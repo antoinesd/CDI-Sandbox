@@ -1,0 +1,15 @@
+= An annotation configured ApplicationScoped bean Example
+
+This example show how an extension how a normal Scope Bean can be define from its injection point by a value in its qualifier.
+
+== Launching test
+
+You'll only need to choose one of the provided maven profiles for test. Profiles are :
+
+* `owb-1` for OpenWebBeans 1.6.x tests
+* `weld-2` for Weld 2.3.x tests
+* `wildfly` for JBoss WildFly 10.x
+
+Just launch `mvn -P<profile>` to launch test (for instance `mvn clean test -Powb-1` to test against OpenWebBeans).
+Tests won't be launched without one of these profiles.
+

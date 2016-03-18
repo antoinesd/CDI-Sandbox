@@ -1,5 +1,6 @@
 package org.cdisandbox.autoinject;
 
+import javax.inject.Inject;
 import java.util.Map;
 
 /**
@@ -8,6 +9,8 @@ import java.util.Map;
  */
 public class CacheContextConsumer {
 
+    @Inject
+    CacheContextConsumer ccc;
     @CacheContext
     private Map<String, String> cache;
 

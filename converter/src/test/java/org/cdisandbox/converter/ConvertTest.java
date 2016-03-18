@@ -10,9 +10,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.io.FileNotFoundException;
 import javax.enterprise.inject.spi.Extension;
 import javax.inject.Inject;
+import java.io.FileNotFoundException;
 
 /**
  * @author Antoine Sabot-Durand
@@ -21,26 +21,24 @@ import javax.inject.Inject;
 @RunWith(Arquillian.class)
 public class ConvertTest {
 
+    @Inject
+    @Convert("126")
+    Integer converted;
+    @Inject
+    @Convert("Me/Hungry")
+    StringBuffer converted2;
+
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
 
         WebArchive ret = ShrinkWrap
                 .create(WebArchive.class, "test.war")
-                .addPackage("org.cdisandbox.converter")
+                .addPackage("org.cdisandbox.config")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsServiceProvider(Extension.class, ConverterExtension.class);
 
         return ret;
     }
-
-
-    @Inject
-    @Convert("126")
-    Integer converted;
-
-    @Inject
-    @Convert("Me/Hungry")
-    StringBuffer converted2;
 
     @Test
     public void shoulHaveInjectedConvertedInteger() {
