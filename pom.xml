@@ -28,13 +28,13 @@
     <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
 
-    <cdi.version>2.0-PFD</cdi.version>
+    <cdi.version>1.2</cdi.version>
 
     <jboss-javaee-7.0.version>1.1.0.Final</jboss-javaee-7.0.version>
 
     <!-- Weld version in WildFly 10.0.0.Final -->
 
-    <weld.version>3.0.0.CR2</weld.version>
+    <weld.version>2.4.3.Final</weld.version>
 
     <!-- Latest version of OWB -->
     <!--<owb.version>1.6.2</owb.version>-->
@@ -269,10 +269,10 @@
           </plugin>
         </plugins>
       </build>
-    </profile>
+      <!--</profile>
 
-    <profile>
-      <id>weld-3</id>
+      <profile>
+        <id>weld-2</id>-->
 
       <properties>
         <arquillian>weld-embedded-1.1</arquillian>

@@ -1,5 +1,10 @@
 package org.cdisandbox.converter;
 
+import java.io.FileNotFoundException;
+
+import javax.enterprise.inject.spi.Extension;
+import javax.inject.Inject;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -10,10 +15,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.enterprise.inject.spi.Extension;
-import javax.inject.Inject;
-import java.io.FileNotFoundException;
-
 /**
  * @author Antoine Sabot-Durand
  */
@@ -21,19 +22,12 @@ import java.io.FileNotFoundException;
 @RunWith(Arquillian.class)
 public class ConvertTest {
 
-    @Inject
-    @Convert("126")
-    Integer converted;
-    @Inject
-    @Convert("Me/Hungry")
-    StringBuffer converted2;
-
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
 
         WebArchive ret = ShrinkWrap
                 .create(WebArchive.class, "test.war")
-                .addPackage("org.cdisandbox.config")
+                .addPackage("org.cdisandbox.converter")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsServiceProvider(Extension.class, ConverterExtension.class);
 
@@ -43,7 +37,7 @@ public class ConvertTest {
     @Test
     public void shoulHaveInjectedConvertedInteger() {
         Assert.assertEquals(new Integer(126), converted);
-       
+
 
     }
 
@@ -52,4 +46,12 @@ public class ConvertTest {
         Assert.assertEquals("Me/Hungry", converted2.toString());
 
     }
+
+    @Inject
+    @Convert("126")
+    Integer converted;
+
+    @Inject
+    @Convert("Me/Hungry")
+    StringBuffer converted2;
 }
